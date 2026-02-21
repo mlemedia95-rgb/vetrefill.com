@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: 'VetRefill - Veterinary Prescription Refill Management',
   description: 'Streamline prescription refills for your veterinary clinic. Automate reminders, manage patients, and never miss a refill deadline.',
   keywords: 'veterinary, prescription, refill, management, pet health, clinic software',
+  verification: {
+    google: 'MzHe7AppcspSa8pCPOgvSnM8wnj3K-o5D1xCGhvR3jY',
+  },
 }
 
 export default function RootLayout({
