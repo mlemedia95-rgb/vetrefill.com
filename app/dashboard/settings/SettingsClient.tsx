@@ -61,7 +61,7 @@ export default function SettingsClient({ clinic, userId }: SettingsClientProps) 
       const { initializePaddle } = await import('@paddle/paddle-js')
       const paddle = await initializePaddle({
         token: paddleClientToken,
-        environment: 'sandbox',
+        environment: 'production',
       })
 
       await paddle?.Checkout.open({
