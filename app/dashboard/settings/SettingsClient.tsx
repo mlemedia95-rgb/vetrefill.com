@@ -5,7 +5,7 @@ import { createClient } from '@/lib/supabase/client'
 import { Clinic } from '@/lib/types'
 
 const supabase = createClient()
-import { Save, Loader2, Crown, CheckCircle, CreditCard, AlertCircle } from 'lucide-react'
+import { Save, Loader2, CheckCircle, AlertCircle } from 'lucide-react'
 
 interface SettingsClientProps {
   clinic: Clinic | null
@@ -21,9 +21,6 @@ export default function SettingsClient({ clinic, userId }: SettingsClientProps) 
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
   const [error, setError] = useState('')
-
-  const isPro = clinic?.subscription_status === 'pro'
-  const refillsUsed = clinic?.refills_used_this_month || 0
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -46,48 +43,12 @@ export default function SettingsClient({ clinic, userId }: SettingsClientProps) 
     setTimeout(() => setSaved(false), 3000)
   }
 
-  const handleUpgrade = async () => {
-    // Paddle checkout integration
-    const paddleClientToken = process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN
-    const proPriceId = process.env.NEXT_PUBLIC_PADDLE_PRO_PRICE_ID
-
-    if (!paddleClientToken || !proPriceId) {
-      alert('Payment configuration is not set up yet. Please contact support.')
-      return
-    }
-
-    // Dynamically load Paddle and open checkout
-    try {
-      const { initializePaddle } = await import('@paddle/paddle-js')
-      const paddle = await initializePaddle({
-        token: paddleClientToken,
-        environment: 'production',
-      })
-
-      await paddle?.Checkout.open({
-        items: [{ priceId: proPriceId, quantity: 1 }],
-        customer: clinic?.email ? { email: clinic.email } : undefined,
-        customData: { clinic_id: userId },
-      })
-    } catch {
-      alert('Failed to open checkout. Please try again.')
-    }
-  }
-
-  const handleCancelSubscription = async () => {
-    if (!confirm('Are you sure you want to cancel your Pro subscription? You will be downgraded at the end of your billing period.')) {
-      return
-    }
-    // This would call your API to cancel via Paddle
-    alert('To cancel your subscription, please contact support at hello@vetrefill.com')
-  }
-
   return (
     <div className="space-y-6 max-w-2xl">
       {/* Page Header */}
       <div>
         <h1 className="text-2xl font-bold text-gray-900">Settings</h1>
-        <p className="text-gray-500 text-sm mt-1">Manage your clinic profile and subscription</p>
+        <p className="text-gray-500 text-sm mt-1">Manage your clinic profile</p>
       </div>
 
       {/* Clinic Profile */}
@@ -161,85 +122,6 @@ export default function SettingsClient({ clinic, userId }: SettingsClientProps) 
             {saving ? 'Saving...' : 'Save changes'}
           </button>
         </form>
-      </div>
-
-      {/* Subscription */}
-      <div className="bg-white rounded-xl border border-gray-100 overflow-hidden">
-        <div className="px-6 py-4 border-b border-gray-100">
-          <h2 className="text-lg font-semibold text-gray-900">Subscription</h2>
-          <p className="text-sm text-gray-500 mt-0.5">Manage your plan and billing</p>
-        </div>
-        <div className="p-6">
-          {/* Current plan */}
-          <div className={`rounded-xl p-4 border-2 mb-6 ${isPro ? 'border-green-300 bg-green-50' : 'border-gray-200 bg-gray-50'}`}>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${isPro ? 'bg-green-600' : 'bg-gray-200'}`}>
-                  <Crown className={`w-5 h-5 ${isPro ? 'text-white' : 'text-gray-500'}`} />
-                </div>
-                <div>
-                  <div className="font-semibold text-gray-900">{isPro ? 'Pro Plan' : 'Free Plan'}</div>
-                  <div className="text-sm text-gray-500">
-                    {isPro ? 'Unlimited refill reminders' : `${refillsUsed}/10 reminders used this month`}
-                  </div>
-                </div>
-              </div>
-              <div className="text-right">
-                <div className="text-lg font-bold text-gray-900">{isPro ? '$29' : '$0'}</div>
-                <div className="text-xs text-gray-500">/month</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Plan comparison */}
-          {!isPro && (
-            <>
-              <div className="space-y-3 mb-6">
-                <h3 className="font-medium text-gray-900">Upgrade to Pro for:</h3>
-                {[
-                  'Unlimited refill reminders',
-                  'Unlimited patients',
-                  'Priority email support',
-                  'Advanced analytics & reporting',
-                  'Custom email templates',
-                  'Bulk patient import',
-                ].map(feature => (
-                  <div key={feature} className="flex items-center gap-2 text-sm text-gray-700">
-                    <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                    {feature}
-                  </div>
-                ))}
-              </div>
-
-              <button
-                onClick={handleUpgrade}
-                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-green-700 hover:to-emerald-700 transition-all shadow-lg shadow-green-200"
-              >
-                <Crown className="w-5 h-5" />
-                Upgrade to Pro — $29/month
-              </button>
-              <p className="text-center text-xs text-gray-400 mt-2">14-day free trial. Cancel anytime.</p>
-            </>
-          )}
-
-          {isPro && (
-            <div className="space-y-4">
-              <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-200">
-                <CreditCard className="w-5 h-5 text-gray-500" />
-                <div>
-                  <div className="text-sm font-medium text-gray-900">Billing managed by Paddle</div>
-                  <div className="text-xs text-gray-500">Secure payment processing</div>
-                </div>
-              </div>
-              <button
-                onClick={handleCancelSubscription}
-                className="text-sm text-red-600 hover:text-red-700 underline"
-              >
-                Cancel subscription
-              </button>
-            </div>
-          )}
-        </div>
       </div>
 
       {/* Account */}

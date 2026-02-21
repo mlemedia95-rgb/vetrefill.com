@@ -27,7 +27,7 @@ export default function LandingPage() {
             </div>
             <div className="hidden md:flex items-center gap-8">
               <a href="#features" className="text-gray-600 hover:text-green-600 transition-colors text-sm font-medium">Features</a>
-              <a href="#pricing" className="text-gray-600 hover:text-green-600 transition-colors text-sm font-medium">Pricing</a>
+              <a href="#features" className="text-gray-600 hover:text-green-600 transition-colors text-sm font-medium">Features</a>
               <a href="#testimonials" className="text-gray-600 hover:text-green-600 transition-colors text-sm font-medium">Reviews</a>
             </div>
             <div className="flex items-center gap-3">
@@ -67,7 +67,7 @@ export default function LandingPage() {
               See how it works
             </a>
           </div>
-          <p className="text-sm text-gray-500 mt-4">Free plan includes 10 refill reminders/month</p>
+          <p className="text-sm text-gray-500 mt-4">100% free — no credit card required</p>
         </div>
 
         {/* Dashboard Preview */}
@@ -259,76 +259,34 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-extrabold text-gray-900 mb-4">Simple, transparent pricing</h2>
-            <p className="text-xl text-gray-600">Start free, upgrade when you grow</p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Free Plan */}
-            <div className="bg-white rounded-2xl p-8 border-2 border-gray-200 shadow-sm">
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-1">Free</h3>
-                <p className="text-gray-500 text-sm">Perfect for small clinics getting started</p>
-              </div>
-              <div className="mb-6">
-                <span className="text-5xl font-extrabold text-gray-900">$0</span>
-                <span className="text-gray-500 ml-1">/month</span>
-              </div>
-              <ul className="space-y-3 mb-8">
-                {[
-                  '10 refill reminders per month',
-                  'Up to 50 patients',
-                  'Email notifications',
-                  'Dashboard & reporting',
-                  'Prescription tracking',
-                ].map(feature => (
-                  <li key={feature} className="flex items-center gap-3 text-gray-700">
-                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <Link href="/signup" className="block w-full text-center bg-gray-100 text-gray-800 px-6 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors">
-                Get started free
-              </Link>
+      {/* Free Section */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-extrabold text-gray-900 mb-4">100% Free — No Credit Card Required</h2>
+          <p className="text-xl text-gray-600 mb-10">VetRefill is completely free to use. All features are included at no cost.</p>
+          <div className="bg-white rounded-2xl p-8 border-2 border-green-200 shadow-sm max-w-lg mx-auto">
+            <div className="mb-6">
+              <span className="text-5xl font-extrabold text-gray-900">$0</span>
+              <span className="text-gray-500 ml-1">/month</span>
             </div>
-
-            {/* Pro Plan */}
-            <div className="bg-green-600 rounded-2xl p-8 border-2 border-green-600 shadow-xl shadow-green-200 relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-yellow-400 text-yellow-900 text-xs font-bold px-4 py-1 rounded-full">
-                MOST POPULAR
-              </div>
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold text-white mb-1">Pro</h3>
-                <p className="text-green-200 text-sm">For growing veterinary practices</p>
-              </div>
-              <div className="mb-6">
-                <span className="text-5xl font-extrabold text-white">$29</span>
-                <span className="text-green-200 ml-1">/month</span>
-              </div>
-              <ul className="space-y-3 mb-8">
-                {[
-                  'Unlimited refill reminders',
-                  'Unlimited patients',
-                  'Priority email support',
-                  'Advanced analytics',
-                  'Custom email templates',
-                  'Bulk import patients',
-                  'API access',
-                ].map(feature => (
-                  <li key={feature} className="flex items-center gap-3 text-white">
-                    <CheckCircle className="w-5 h-5 text-green-200 flex-shrink-0" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <Link href="/signup?plan=pro" className="block w-full text-center bg-white text-green-700 px-6 py-3 rounded-xl font-semibold hover:bg-green-50 transition-colors">
-                Start Pro — 14 days free
-              </Link>
-            </div>
+            <ul className="space-y-3 mb-8 text-left">
+              {[
+                'Unlimited refill reminders',
+                'Unlimited patients',
+                'Automated email notifications',
+                'Dashboard & reporting',
+                'Prescription tracking',
+                'Priority support',
+              ].map(feature => (
+                <li key={feature} className="flex items-center gap-3 text-gray-700">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <Link href="/signup" className="block w-full text-center bg-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-green-700 transition-colors">
+              Get started for free
+            </Link>
           </div>
         </div>
       </section>
