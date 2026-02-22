@@ -15,13 +15,8 @@ export default function TermsPage() {
       </section>
 
       <section style={{ marginBottom: '32px' }}>
-        <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '12px' }}>3. Subscription and Payment</h2>
-        <p>VetRefill offers a free plan and a Pro plan at $29/month. Payments are processed securely through Paddle. Subscriptions renew automatically unless cancelled. You may cancel at any time from your account settings.</p>
-      </section>
-
-      <section style={{ marginBottom: '32px' }}>
-        <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '12px' }}>4. Free Trial</h2>
-        <p>Pro plan includes a 14-day free trial. No credit card is required for the free plan. You will be charged only after the trial period ends if you choose to continue.</p>
+        <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '12px' }}>3. Free Service</h2>
+        <p>VetRefill is completely free to use. No credit card is required. There are no hidden fees or charges associated with using the Service.</p>
       </section>
 
       <section style={{ marginBottom: '32px' }}>
@@ -46,7 +41,7 @@ export default function TermsPage() {
 
       <section style={{ marginBottom: '32px' }}>
         <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '12px' }}>9. Contact</h2>
-        <p>For questions about these Terms, contact us at: <a href="mailto:support@vetrefill.com" style={{ color: '#16a34a' }}>support@vetrefill.com</a></p>
+        <p>For questions about these Terms, contact us at: <a href="mailto:dreaminvestmentcompany1@gmail.com" style={{ color: '#16a34a' }}>dreaminvestmentcompany1@gmail.com</a></p>
       </section>
     </div>
   )

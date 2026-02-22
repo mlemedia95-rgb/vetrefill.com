@@ -41,7 +41,7 @@ export default function PrivacyPage() {
 
       <section style={{ marginBottom: '32px' }}>
         <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '12px' }}>8. Contact</h2>
-        <p>For privacy-related questions, contact us at: <a href="mailto:privacy@vetrefill.com" style={{ color: '#16a34a' }}>privacy@vetrefill.com</a></p>
+        <p>For privacy-related questions, contact us at: <a href="mailto:dreaminvestmentcompany1@gmail.com" style={{ color: '#16a34a' }}>dreaminvestmentcompany1@gmail.com</a></p>
       </section>
     </div>
   )

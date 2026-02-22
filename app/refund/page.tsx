@@ -16,7 +16,7 @@ export default function RefundPage() {
 
       <section style={{ marginBottom: '32px' }}>
         <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '12px' }}>Refund Eligibility</h2>
-        <p>We offer a full refund within 7 days of your first charge if you are not satisfied with the Service. To request a refund, contact us at <a href="mailto:support@vetrefill.com" style={{ color: '#16a34a' }}>support@vetrefill.com</a> within 7 days of the charge.</p>
+        <p>We offer a full refund within 7 days of your first charge if you are not satisfied with the Service. To request a refund, contact us at <a href="mailto:dreaminvestmentcompany1@gmail.com" style={{ color: '#16a34a' }}>dreaminvestmentcompany1@gmail.com</a> within 7 days of the charge.</p>
       </section>
 
       <section style={{ marginBottom: '32px' }}>
@@ -26,12 +26,12 @@ export default function RefundPage() {
 
       <section style={{ marginBottom: '32px' }}>
         <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '12px' }}>How to Request a Refund</h2>
-        <p>Email us at <a href="mailto:support@vetrefill.com" style={{ color: '#16a34a' }}>support@vetrefill.com</a> with your account email and reason for the refund. We will process eligible refunds within 5-10 business days.</p>
+        <p>Email us at <a href="mailto:dreaminvestmentcompany1@gmail.com" style={{ color: '#16a34a' }}>dreaminvestmentcompany1@gmail.com</a> with your account email and reason for the refund. We will process eligible refunds within 5-10 business days.</p>
       </section>
 
       <section style={{ marginBottom: '32px' }}>
         <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '12px' }}>Contact</h2>
-        <p>Questions about refunds? Contact us at: <a href="mailto:support@vetrefill.com" style={{ color: '#16a34a' }}>support@vetrefill.com</a></p>
+        <p>Questions about refunds? Contact us at: <a href="mailto:dreaminvestmentcompany1@gmail.com" style={{ color: '#16a34a' }}>dreaminvestmentcompany1@gmail.com</a></p>
       </section>
     </div>
   )
