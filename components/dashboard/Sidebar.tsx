@@ -11,7 +11,7 @@ const navItems = [
   { href: '/dashboard/patients', label: 'Patients', icon: Users },
   { href: '/dashboard/prescriptions', label: 'Prescriptions', icon: ClipboardList },
   { href: '/dashboard/settings', label: 'Settings', icon: Settings },
-  { href: '/dashboard/fun', label: '🎡 Fun Zone', icon: Sparkles },
+  { href: '/fun', label: '🎡 Fun Zone', icon: Sparkles },
 ]
 
 const supabase = createClient()
