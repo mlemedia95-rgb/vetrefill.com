@@ -104,6 +104,59 @@ export async function GET(request: NextRequest) {
     }
   }
 
+  // Send daily report to admin
+  try {
+    await resend.emails.send({
+      from: 'VetRefill <reminders@vetrefill.com>',
+      to: 'dreaminvestmentcompany1@gmail.com',
+      subject: `📋 VetRefill Daily Report – ${targetDateStr}`,
+      html: `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #f9fafb;">
+  <div style="max-width: 600px; margin: 40px auto; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+    <div style="background: linear-gradient(135deg, #16a34a, #15803d); padding: 32px 40px; text-align: center;">
+      <h1 style="color: white; margin: 0; font-size: 24px; font-weight: 700;">📋 Daily Reminder Report</h1>
+      <p style="color: #bbf7d0; margin: 8px 0 0; font-size: 14px;">${new Date().toLocaleString('tr-TR', { timeZone: 'Europe/Istanbul' })}</p>
+    </div>
+    <div style="padding: 40px;">
+      <p style="color: #374151; font-size: 16px; margin: 0 0 24px;">Here is the daily reminder summary for VetRefill:</p>
+      <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 20px; margin: 0 0 24px;">
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr>
+            <td style="color: #6b7280; font-size: 14px; padding: 8px 0; width: 60%;">Reminders Processed</td>
+            <td style="color: #111827; font-size: 20px; font-weight: 700; text-align: right;">${prescriptions?.length || 0}</td>
+          </tr>
+          <tr>
+            <td style="color: #6b7280; font-size: 14px; padding: 8px 0;">✅ Successfully Sent</td>
+            <td style="color: #16a34a; font-size: 20px; font-weight: 700; text-align: right;">${sent}</td>
+          </tr>
+          <tr>
+            <td style="color: #6b7280; font-size: 14px; padding: 8px 0;">❌ Failed</td>
+            <td style="color: #dc2626; font-size: 20px; font-weight: 700; text-align: right;">${failed}</td>
+          </tr>
+          <tr>
+            <td style="color: #6b7280; font-size: 14px; padding: 8px 0;">📅 Target Refill Date</td>
+            <td style="color: #111827; font-size: 14px; font-weight: 600; text-align: right;">${targetDateStr}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div style="background: #f9fafb; border-top: 1px solid #e5e7eb; padding: 20px 40px; text-align: center;">
+      <p style="color: #9ca3af; font-size: 12px; margin: 0;">VetRefill Admin Notification – Automated Daily Report</p>
+    </div>
+  </div>
+</body>
+</html>
+      `.trim(),
+    })
+  } catch (err) {
+    console.error('Failed to send admin daily report:', err)
+  }
+
   return NextResponse.json({
     success: true,
     processed: prescriptions?.length || 0,

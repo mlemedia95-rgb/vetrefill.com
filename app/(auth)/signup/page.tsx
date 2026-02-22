@@ -54,6 +54,17 @@ export default function SignupPage() {
       return
     }
 
+    // Notify admin about new signup
+    try {
+      await fetch('/api/notify-signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ clinicName: formData.clinicName, email: formData.email }),
+      })
+    } catch {
+      // Notification failure should not block signup
+    }
+
     setSuccess(true)
   }
 
