@@ -27,8 +27,8 @@ export default function LandingPage() {
             </div>
             <div className="hidden md:flex items-center gap-8">
               <a href="#features" className="text-gray-600 hover:text-green-600 transition-colors text-sm font-medium">Features</a>
-              <a href="#features" className="text-gray-600 hover:text-green-600 transition-colors text-sm font-medium">Features</a>
               <a href="#testimonials" className="text-gray-600 hover:text-green-600 transition-colors text-sm font-medium">Reviews</a>
+              <Link href="/articles" className="text-gray-600 hover:text-green-600 transition-colors text-sm font-medium">Articles</Link>
             </div>
             <div className="flex items-center gap-3">
               <Link href="/login" className="text-gray-600 hover:text-green-600 transition-colors text-sm font-medium px-4 py-2">
@@ -324,8 +324,9 @@ export default function LandingPage() {
               <span className="text-white font-bold text-lg">VetRefill</span>
             </div>
             <div className="flex items-center gap-8 text-sm">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+              <Link href="/articles" className="hover:text-white transition-colors">Articles</Link>
+              <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
               <a href="mailto:hello@vetrefill.com" className="hover:text-white transition-colors">Contact</a>
             </div>
             <p className="text-sm">© 2024 VetRefill. All rights reserved.</p>
