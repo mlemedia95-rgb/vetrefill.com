@@ -29,6 +29,7 @@ export default function LandingPage() {
               <a href="#features" className="text-gray-600 hover:text-green-600 transition-colors text-sm font-medium">Features</a>
               <a href="#testimonials" className="text-gray-600 hover:text-green-600 transition-colors text-sm font-medium">Reviews</a>
               <Link href="/articles" className="text-gray-600 hover:text-green-600 transition-colors text-sm font-medium">Articles</Link>
+              <Link href="/fun" className="text-gray-600 hover:text-green-600 transition-colors text-sm font-medium">🎡 Fun Zone</Link>
             </div>
             <div className="flex items-center gap-3">
               <Link href="/login" className="text-gray-600 hover:text-green-600 transition-colors text-sm font-medium px-4 py-2">
